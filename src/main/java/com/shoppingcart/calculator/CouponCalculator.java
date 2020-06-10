@@ -6,7 +6,7 @@ import com.shoppingcart.model.Discount;
 
 public class CouponCalculator extends DiscountCalculator {
     @Override
-    public double calculate(Discount discount, ShoppingCart cart) {
+    public double calculateFor(Discount discount, ShoppingCart cart) {
 
         Coupon coupon = (Coupon) discount;
 

@@ -14,6 +14,46 @@ import static org.mockito.Mockito.when;
 public class CampaignCalculatorTest {
 
     @Test
+    public void calculate_shouldReturnZero_whenCardIsNull() {
+
+        Category category = new Category("Test Category");
+        Campaign campaign = new Campaign(category, 10, 1, DiscountType.AMOUNT);
+
+        ShoppingCart nullCart = null;
+
+        CampaignCalculator campaignCalculator = new CampaignCalculator();
+        double campaignDiscount = campaignCalculator.calculate(campaign, nullCart);
+
+        assertThat(campaignDiscount).isZero();
+    }
+
+    @Test
+    public void calculate_shouldReturnZero_whenCampaignIsNull() {
+
+        Campaign nullCampaign = null;
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+        CampaignCalculator campaignCalculator = new CampaignCalculator();
+        double campaignDiscount = campaignCalculator.calculate(nullCampaign, shoppingCart);
+
+        assertThat(campaignDiscount).isZero();
+    }
+
+    @Test
+    public void calculate_shouldReturnZero_whenBothShoppingCartAndCampaignAreNull() {
+
+        Campaign nullCampaign = null;
+
+        ShoppingCart nullCart = null;
+
+        CampaignCalculator campaignCalculator = new CampaignCalculator();
+        double campaignDiscount = campaignCalculator.calculate(nullCampaign, nullCart);
+
+        assertThat(campaignDiscount).isZero();
+    }
+
+    @Test
     public void calculate_shouldReturnZero_whenCartHasNoProducts() {
 
         Category category = new Category("Test Category");

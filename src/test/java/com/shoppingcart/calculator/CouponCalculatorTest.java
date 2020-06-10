@@ -13,6 +13,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CouponCalculatorTest {
 
     @Test
+    public void calculate_shouldReturnZero_whenCardIsNull() {
+
+        Coupon coupon = new Coupon(100, 10, DiscountType.AMOUNT);
+
+        ShoppingCart nullCart = null;
+
+        CouponCalculator couponCalculator = new CouponCalculator();
+        double couponDiscount = couponCalculator.calculate(coupon, nullCart);
+
+        assertThat(couponDiscount).isZero();
+    }
+
+    @Test
+    public void calculate_shouldReturnZero_whenCouponIsNull() {
+
+        Coupon nullCoupon = null;
+
+        ShoppingCart shoppingCart = new ShoppingCart();
+
+        CouponCalculator couponCalculator = new CouponCalculator();
+        double couponDiscount = couponCalculator.calculate(nullCoupon, shoppingCart);
+
+        assertThat(couponDiscount).isZero();
+    }
+
+    @Test
+    public void calculate_shouldReturnZero_whenBothShoppingCartAndCouponAreNull() {
+
+        Coupon nullCoupon = null;
+
+        ShoppingCart nullCart = null;
+
+        CouponCalculator couponCalculator = new CouponCalculator();
+        double couponDiscount = couponCalculator.calculate(nullCoupon, nullCart);
+
+        assertThat(couponDiscount).isZero();
+    }
+
+    @Test
     public void calculate_shouldReturnZero_whenCartHasNoItem() {
 
         ShoppingCart shoppingCart = new ShoppingCart();
@@ -84,7 +123,7 @@ public class CouponCalculatorTest {
     }
 
     @Test
-    public void calculate_shouldReturnDiscountAmount_whenRemainingAmountOfProductsAfterApplyingCampaignsIsNotLessThanDiscountMinimumAmount() {
+    public void calculate_shouldReturnDiscountAmount_whenRemainingAmountOfProductsAfterApplyinCampaignIsNotLessThanDiscountMinimumAmount() {
 
         Category category = new Category("Test Category");
         Product product = new Product("Test Product", 100, category);

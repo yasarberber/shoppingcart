@@ -4,11 +4,20 @@ import com.shoppingcart.ShoppingCart;
 import com.shoppingcart.model.Discount;
 import com.shoppingcart.type.DiscountType;
 
+import java.util.Objects;
+
 public abstract class DiscountCalculator {
 
-    //addValidate
+    public double calculate(Discount discount, ShoppingCart cart){
+        double discountAmount = 0;
 
-    public abstract double calculate(Discount discount, ShoppingCart cart);
+        if(Objects.nonNull(discount) && Objects.nonNull(cart)){
+            discountAmount = calculateFor(discount,cart);
+        }
+        return discountAmount;
+    }
+
+    public abstract double calculateFor(Discount discount, ShoppingCart cart);
 
     public double calculateDiscountAmount(double amount, Discount discount) {
 

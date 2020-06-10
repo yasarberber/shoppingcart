@@ -10,7 +10,7 @@ import java.util.List;
 public class CampaignCalculator extends DiscountCalculator {
 
     @Override
-    public double calculate(Discount discount, ShoppingCart cart) {
+    public double calculateFor(Discount discount, ShoppingCart cart) {
 
         Campaign campaign = (Campaign) discount;
         double campaignAmount = 0;
