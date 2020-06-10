@@ -66,18 +66,18 @@ public class Demo {
         shoppingCart.applyDiscounts(neAlirsan, askerDostu);
         shoppingCart.applyCoupon(kupon);
 
-        shoppingCart.print();
+        System.out.println(shoppingCart.print());
 
 
         //******************************//
 
         shoppingCart.addItem(elTv, 1);
         shoppingCart.applyCoupon(kuponGibiKupon);
-        shoppingCart.print();
+        System.out.println(shoppingCart.print());
 
         //******************************//
         shoppingCart.setDeliveryCostCalculator(new DeliveryCostCalculatorImpl(2,1, DeliveryConstants.FIXED_COST));
-        shoppingCart.print();
+        System.out.println(shoppingCart.print());
 
     }
 }
